@@ -12,7 +12,9 @@ java {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$ext.commons.kotlinVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$ext.libraries.coroutineVersion"
+    implementation "com.squareup.retrofit2:retrofit:$ext.libraries.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$ext.libraries.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$ext.libraries.okhttp3LoggingInterceptorVersion"
 
     testImplementation "junit:junit:$ext.testLibraries.jUnitVersion"
     testImplementation "io.mockk:mockk:$ext.testLibraries.mockkVersion"

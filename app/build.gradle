@@ -3,16 +3,18 @@ plugins {
     id 'kotlin-android'
 }
 
+def ext = rootProject.extensions.getByName("ext")
+
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion ext.app.compileSdkVersion
+    buildToolsVersion ext.app.buildToolsVersion
 
     defaultConfig {
         applicationId "br.com.gupy.fernando.marvelapp"
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion ext.app.minSdkVersion
+        targetSdkVersion ext.app.targetSdkVersion
+        versionCode ext.app.targetSdkVersion
+        versionName ext.app.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,23 +25,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility ext.commons.javaVersion
+        targetCompatibility ext.commons.javaVersion
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$ext.commons.kotlinVersion"
+    implementation "androidx.core:core-ktx:$ext.libraries.coreKtxVersion"
+    implementation "androidx.appcompat:appcompat:$ext.libraries.appCompatVersion"
+    implementation "com.google.android.material:material:$ext.libraries.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$ext.libraries.constraintLayoutVersion"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // DI
+    implementation "org.koin:koin-android:$ext.libraries.koinVersion"
+    implementation "org.koin:koin-android-scope:$ext.libraries.koinVersion"
+    implementation "org.koin:koin-android-viewmodel:$ext.libraries.koinVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ext.libraries.coroutineVersion"
+
+    testImplementation "junit:junit:$ext.testLibraries.jUnitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$ext.testLibraries.androidXjUnitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$ext.testLibraries.androidXEspressoVersion"
+    androidTestImplementation "io.mockk:mockk-android:$ext.testLibraries.mockkVersion"
 }
