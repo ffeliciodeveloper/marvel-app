@@ -10,9 +10,23 @@ java {
     targetCompatibility = ext.commons.javaVersion
 }
 
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = ext.commons.jvmTargetVersion
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = ext.commons.jvmTargetVersion
+    }
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$ext.commons.kotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$ext.libraries.coroutineVersion"
+
+    implementation "org.koin:koin-core:$ext.libraries.koinVersion"
+    implementation "org.koin:koin-test:$ext.libraries.koinVersion"
 
     testImplementation "junit:junit:$ext.testLibraries.jUnitVersion"
     testImplementation "io.mockk:mockk:$ext.testLibraries.mockkVersion"
