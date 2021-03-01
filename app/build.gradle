@@ -32,11 +32,14 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = ext.commons.jvmTargetVersion
     }
 }
 
 dependencies {
+    implementation project(':domain')
+    implementation project(':data')
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$ext.commons.kotlinVersion"
     implementation "androidx.core:core-ktx:$ext.libraries.coreKtxVersion"
     implementation "androidx.appcompat:appcompat:$ext.libraries.appCompatVersion"

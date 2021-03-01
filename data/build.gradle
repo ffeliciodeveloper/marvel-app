@@ -11,10 +11,15 @@ java {
 }
 
 dependencies {
+    implementation project(':domain')
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$ext.commons.kotlinVersion"
     implementation "com.squareup.retrofit2:retrofit:$ext.libraries.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$ext.libraries.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$ext.libraries.okhttp3LoggingInterceptorVersion"
+
+    implementation "org.koin:koin-core:$ext.libraries.koinVersion"
+    implementation "org.koin:koin-test:$ext.libraries.koinVersion"
 
     testImplementation "junit:junit:$ext.testLibraries.jUnitVersion"
     testImplementation "io.mockk:mockk:$ext.testLibraries.mockkVersion"

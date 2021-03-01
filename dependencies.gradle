@@ -1,7 +1,8 @@
 ext {
     commons = [
-        kotlinVersion : '1.4.31',
-        javaVersion   : JavaVersion.VERSION_1_8
+        kotlinVersion    : '1.4.31',
+        javaVersion      : JavaVersion.VERSION_1_8,
+        jvmTargetVersion : '1.8'
     ]
 
     app = [
