@@ -5,7 +5,7 @@ import br.com.gupy.fernando.domain.repository.MarvelRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<MarvelRepository> { MarvelRepositoryImpl() }
+    single<MarvelRepository> { MarvelRepositoryImpl(marvelApi = get()) }
 }
 
 val dataModule = listOf(repositoryModule, marvelApiModule)

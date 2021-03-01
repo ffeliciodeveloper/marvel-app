@@ -1,7 +1,7 @@
 package br.com.gupy.fernando.domain.repository
 
 interface MarvelRepository {
-    fun fetchListOfCharacters(limit : Int);
-    fun fetchCharacterDetail(character : Int);
-    fun fetchComicOfCharacter(character : Int);
+    suspend fun fetchListOfCharacters(limit : Int);
+    suspend fun fetchCharacterDetail(character : Int);
+    suspend fun fetchComicOfCharacter(character : Int);
 }
